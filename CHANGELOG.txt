@@ -1,0 +1,53 @@
+v1.0
+----
+
+Basic Hotel Management System Software includes:
+
+a.	CHECK IN
+		- Room Type (Dropdown list)
+		- Room No (Dropdown list)
+		- No of Day(s) (Textbox)
+		- Deposit Amount (Textbox)
+		- Total Price (Textbox - Read only)
+		- Name (Textbox)
+		- I/C or Passport (Textbox)
+		- Contact No (Textbox)
+		- Address (Textbox - Multi-line)
+		- Clear All (Button)
+		- Paid (Textbox)
+		- Balance (Textbox - Read only)
+		- Check In (Button)
+			. Store guest's information into database
+			. Change selected room status to 'Occupied'
+			. Enable Print Details function
+		- Print Details (Button)
+			. Generate PDF file with guest's information printed on it
+
+b.	CHECK OUT
+		- Room No (Dropdown list)
+		- Check Out (Button)
+			. Change selected room status to 'Available'
+			. Enable Print Receipt function
+		- Print Receipt (Button)
+			. Generate PDF file with guest's information printed on it
+		- Booking Details (Read only fields)
+			. Name
+			. I/C or Passport
+			. Contact No
+			. Deposit Amount
+
+c.	LOG BOOK
+		- Date selection (Datepicker)
+		- View all dates (Checkbox)
+		- Log (Datagrid View - Read only fields)
+			. id
+			. RoomNo
+			. LogType
+			. DateTime
+
+All functionalities are already working.
+
+In future may need to add:
+	1. Administrator login for managing room information (for dropdown list).
+	2. Search for existing guests.
+
