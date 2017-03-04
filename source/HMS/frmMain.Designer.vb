@@ -26,8 +26,37 @@ Partial Class frmMain
         Me.pnlMain = New System.Windows.Forms.Panel()
         Me.pnlLogo = New System.Windows.Forms.Panel()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.picLogo = New System.Windows.Forms.PictureBox()
+        Me.pnlExtend = New System.Windows.Forms.Panel()
+        Me.lblEBalanceRM = New System.Windows.Forms.Label()
+        Me.txtEBalance = New System.Windows.Forms.TextBox()
+        Me.lblEBalance = New System.Windows.Forms.Label()
+        Me.lblEPaidRM = New System.Windows.Forms.Label()
+        Me.txtEPaid = New System.Windows.Forms.TextBox()
+        Me.lblEPaid = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtEPrice = New System.Windows.Forms.TextBox()
+        Me.txtEDays = New System.Windows.Forms.TextBox()
+        Me.lblETotalPrice = New System.Windows.Forms.Label()
+        Me.lblEExtendDay = New System.Windows.Forms.Label()
+        Me.gpEDetail = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtEDeposit = New System.Windows.Forms.TextBox()
+        Me.lblEDepositAmt = New System.Windows.Forms.Label()
+        Me.txtEContact = New System.Windows.Forms.TextBox()
+        Me.txtEIC = New System.Windows.Forms.TextBox()
+        Me.txtEName = New System.Windows.Forms.TextBox()
+        Me.lblEContact = New System.Windows.Forms.Label()
+        Me.lblEIC = New System.Windows.Forms.Label()
+        Me.lblEName = New System.Windows.Forms.Label()
+        Me.btnEPrint = New System.Windows.Forms.Button()
+        Me.btnEExtend = New System.Windows.Forms.Button()
+        Me.cbERoom = New System.Windows.Forms.ComboBox()
+        Me.lblERoomNo = New System.Windows.Forms.Label()
         Me.pnlLogBook = New System.Windows.Forms.Panel()
+        Me.gpLogBookDisplay = New System.Windows.Forms.GroupBox()
+        Me.chkLogM = New System.Windows.Forms.CheckBox()
+        Me.chkLogCO = New System.Windows.Forms.CheckBox()
+        Me.chkLogCI = New System.Windows.Forms.CheckBox()
         Me.chkAll = New System.Windows.Forms.CheckBox()
         Me.dtPicker = New System.Windows.Forms.DateTimePicker()
         Me.dgvLogBook = New System.Windows.Forms.DataGridView()
@@ -35,7 +64,7 @@ Partial Class frmMain
         Me.gpDetail = New System.Windows.Forms.GroupBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtDeposit = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
+        Me.lblDepositAmt = New System.Windows.Forms.Label()
         Me.txtContact = New System.Windows.Forms.TextBox()
         Me.txtIC = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
@@ -48,6 +77,7 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pnlCheckIn = New System.Windows.Forms.Panel()
         Me.gpCheckIn = New System.Windows.Forms.GroupBox()
+        Me.btnRefresh = New System.Windows.Forms.Button()
         Me.btnCPrint = New System.Windows.Forms.Button()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txtCDeposit = New System.Windows.Forms.TextBox()
@@ -78,6 +108,7 @@ Partial Class frmMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnCClear = New System.Windows.Forms.Button()
         Me.pnlMainMenu = New System.Windows.Forms.Panel()
+        Me.btnExtend = New System.Windows.Forms.Button()
         Me.btnCheckIn = New System.Windows.Forms.Button()
         Me.btnCheckOut = New System.Windows.Forms.Button()
         Me.btnLog = New System.Windows.Forms.Button()
@@ -87,6 +118,8 @@ Partial Class frmMain
         Me.Room = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Reason = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Complete = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.pnlHideAvailability = New System.Windows.Forms.Panel()
+        Me.chkHideAvailability = New System.Windows.Forms.CheckBox()
         Me.gpMaintenance = New System.Windows.Forms.GroupBox()
         Me.btnMAdd = New System.Windows.Forms.Button()
         Me.cbMReason = New System.Windows.Forms.ComboBox()
@@ -94,10 +127,13 @@ Partial Class frmMain
         Me.cbMRoom = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Splitter = New System.Windows.Forms.Splitter()
+        Me.pnlRoomAvailability = New System.Windows.Forms.Panel()
         Me.pnlMain.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlExtend.SuspendLayout()
+        Me.gpEDetail.SuspendLayout()
         Me.pnlLogBook.SuspendLayout()
+        Me.gpLogBookDisplay.SuspendLayout()
         CType(Me.dgvLogBook, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCheckOut.SuspendLayout()
         Me.gpDetail.SuspendLayout()
@@ -106,12 +142,14 @@ Partial Class frmMain
         Me.pnlMainMenu.SuspendLayout()
         Me.pnlSecond.SuspendLayout()
         CType(Me.dgvMaintenance, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlHideAvailability.SuspendLayout()
         Me.gpMaintenance.SuspendLayout()
         Me.SuspendLayout()
         '
         'pnlMain
         '
         Me.pnlMain.Controls.Add(Me.pnlLogo)
+        Me.pnlMain.Controls.Add(Me.pnlExtend)
         Me.pnlMain.Controls.Add(Me.pnlLogBook)
         Me.pnlMain.Controls.Add(Me.pnlCheckOut)
         Me.pnlMain.Controls.Add(Me.pnlCheckIn)
@@ -119,17 +157,17 @@ Partial Class frmMain
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMain.Location = New System.Drawing.Point(0, 0)
         Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(608, 721)
+        Me.pnlMain.Size = New System.Drawing.Size(608, 750)
         Me.pnlMain.TabIndex = 0
         '
         'pnlLogo
         '
+        Me.pnlLogo.Controls.Add(Me.pnlRoomAvailability)
         Me.pnlLogo.Controls.Add(Me.btnBack)
-        Me.pnlLogo.Controls.Add(Me.picLogo)
         Me.pnlLogo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlLogo.Location = New System.Drawing.Point(0, 722)
+        Me.pnlLogo.Location = New System.Drawing.Point(0, 558)
         Me.pnlLogo.Name = "pnlLogo"
-        Me.pnlLogo.Size = New System.Drawing.Size(608, 0)
+        Me.pnlLogo.Size = New System.Drawing.Size(608, 192)
         Me.pnlLogo.TabIndex = 11
         '
         'btnBack
@@ -143,25 +181,339 @@ Partial Class frmMain
         Me.btnBack.UseVisualStyleBackColor = False
         Me.btnBack.Visible = False
         '
-        'picLogo
+        'pnlExtend
         '
-        Me.picLogo.Location = New System.Drawing.Point(88, 24)
-        Me.picLogo.Name = "picLogo"
-        Me.picLogo.Size = New System.Drawing.Size(349, 77)
-        Me.picLogo.TabIndex = 6
-        Me.picLogo.TabStop = False
+        Me.pnlExtend.Controls.Add(Me.lblEBalanceRM)
+        Me.pnlExtend.Controls.Add(Me.txtEBalance)
+        Me.pnlExtend.Controls.Add(Me.lblEBalance)
+        Me.pnlExtend.Controls.Add(Me.lblEPaidRM)
+        Me.pnlExtend.Controls.Add(Me.txtEPaid)
+        Me.pnlExtend.Controls.Add(Me.lblEPaid)
+        Me.pnlExtend.Controls.Add(Me.Label22)
+        Me.pnlExtend.Controls.Add(Me.txtEPrice)
+        Me.pnlExtend.Controls.Add(Me.txtEDays)
+        Me.pnlExtend.Controls.Add(Me.lblETotalPrice)
+        Me.pnlExtend.Controls.Add(Me.lblEExtendDay)
+        Me.pnlExtend.Controls.Add(Me.gpEDetail)
+        Me.pnlExtend.Controls.Add(Me.btnEPrint)
+        Me.pnlExtend.Controls.Add(Me.btnEExtend)
+        Me.pnlExtend.Controls.Add(Me.cbERoom)
+        Me.pnlExtend.Controls.Add(Me.lblERoomNo)
+        Me.pnlExtend.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlExtend.Location = New System.Drawing.Point(0, 509)
+        Me.pnlExtend.Name = "pnlExtend"
+        Me.pnlExtend.Size = New System.Drawing.Size(608, 49)
+        Me.pnlExtend.TabIndex = 12
+        Me.pnlExtend.Visible = False
+        '
+        'lblEBalanceRM
+        '
+        Me.lblEBalanceRM.AutoSize = True
+        Me.lblEBalanceRM.BackColor = System.Drawing.Color.Violet
+        Me.lblEBalanceRM.Location = New System.Drawing.Point(107, 138)
+        Me.lblEBalanceRM.Name = "lblEBalanceRM"
+        Me.lblEBalanceRM.Size = New System.Drawing.Size(24, 13)
+        Me.lblEBalanceRM.TabIndex = 33
+        Me.lblEBalanceRM.Text = "RM"
+        '
+        'txtEBalance
+        '
+        Me.txtEBalance.Location = New System.Drawing.Point(137, 135)
+        Me.txtEBalance.Name = "txtEBalance"
+        Me.txtEBalance.ReadOnly = True
+        Me.txtEBalance.Size = New System.Drawing.Size(137, 20)
+        Me.txtEBalance.TabIndex = 29
+        Me.txtEBalance.Text = "0.00"
+        Me.txtEBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblEBalance
+        '
+        Me.lblEBalance.AutoSize = True
+        Me.lblEBalance.Location = New System.Drawing.Point(24, 138)
+        Me.lblEBalance.Name = "lblEBalance"
+        Me.lblEBalance.Size = New System.Drawing.Size(52, 13)
+        Me.lblEBalance.TabIndex = 32
+        Me.lblEBalance.Text = "Balance :"
+        '
+        'lblEPaidRM
+        '
+        Me.lblEPaidRM.AutoSize = True
+        Me.lblEPaidRM.BackColor = System.Drawing.Color.Lime
+        Me.lblEPaidRM.Location = New System.Drawing.Point(107, 112)
+        Me.lblEPaidRM.Name = "lblEPaidRM"
+        Me.lblEPaidRM.Size = New System.Drawing.Size(24, 13)
+        Me.lblEPaidRM.TabIndex = 31
+        Me.lblEPaidRM.Text = "RM"
+        '
+        'txtEPaid
+        '
+        Me.txtEPaid.Location = New System.Drawing.Point(137, 109)
+        Me.txtEPaid.Name = "txtEPaid"
+        Me.txtEPaid.Size = New System.Drawing.Size(137, 20)
+        Me.txtEPaid.TabIndex = 28
+        Me.txtEPaid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblEPaid
+        '
+        Me.lblEPaid.AutoSize = True
+        Me.lblEPaid.Location = New System.Drawing.Point(24, 112)
+        Me.lblEPaid.Name = "lblEPaid"
+        Me.lblEPaid.Size = New System.Drawing.Size(34, 13)
+        Me.lblEPaid.TabIndex = 30
+        Me.lblEPaid.Text = "Paid :"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.BackColor = System.Drawing.Color.Wheat
+        Me.Label22.Location = New System.Drawing.Point(107, 86)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(24, 13)
+        Me.Label22.TabIndex = 23
+        Me.Label22.Text = "RM"
+        '
+        'txtEPrice
+        '
+        Me.txtEPrice.Location = New System.Drawing.Point(137, 83)
+        Me.txtEPrice.Name = "txtEPrice"
+        Me.txtEPrice.ReadOnly = True
+        Me.txtEPrice.Size = New System.Drawing.Size(137, 20)
+        Me.txtEPrice.TabIndex = 22
+        Me.txtEPrice.Text = "0.00"
+        Me.txtEPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txtEDays
+        '
+        Me.txtEDays.Location = New System.Drawing.Point(110, 52)
+        Me.txtEDays.Name = "txtEDays"
+        Me.txtEDays.Size = New System.Drawing.Size(47, 20)
+        Me.txtEDays.TabIndex = 7
+        Me.txtEDays.Text = "1"
+        Me.txtEDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblETotalPrice
+        '
+        Me.lblETotalPrice.AutoSize = True
+        Me.lblETotalPrice.Location = New System.Drawing.Point(24, 86)
+        Me.lblETotalPrice.Name = "lblETotalPrice"
+        Me.lblETotalPrice.Size = New System.Drawing.Size(64, 13)
+        Me.lblETotalPrice.TabIndex = 6
+        Me.lblETotalPrice.Text = "Total Price :"
+        '
+        'lblEExtendDay
+        '
+        Me.lblEExtendDay.AutoSize = True
+        Me.lblEExtendDay.Location = New System.Drawing.Point(24, 55)
+        Me.lblEExtendDay.Name = "lblEExtendDay"
+        Me.lblEExtendDay.Size = New System.Drawing.Size(79, 13)
+        Me.lblEExtendDay.TabIndex = 5
+        Me.lblEExtendDay.Text = "Extend Day(s) :"
+        '
+        'gpEDetail
+        '
+        Me.gpEDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gpEDetail.Controls.Add(Me.Label20)
+        Me.gpEDetail.Controls.Add(Me.txtEDeposit)
+        Me.gpEDetail.Controls.Add(Me.lblEDepositAmt)
+        Me.gpEDetail.Controls.Add(Me.txtEContact)
+        Me.gpEDetail.Controls.Add(Me.txtEIC)
+        Me.gpEDetail.Controls.Add(Me.txtEName)
+        Me.gpEDetail.Controls.Add(Me.lblEContact)
+        Me.gpEDetail.Controls.Add(Me.lblEIC)
+        Me.gpEDetail.Controls.Add(Me.lblEName)
+        Me.gpEDetail.Location = New System.Drawing.Point(295, 10)
+        Me.gpEDetail.Name = "gpEDetail"
+        Me.gpEDetail.Size = New System.Drawing.Size(300, 36)
+        Me.gpEDetail.TabIndex = 4
+        Me.gpEDetail.TabStop = False
+        Me.gpEDetail.Text = "Booking Details"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.Red
+        Me.Label20.Location = New System.Drawing.Point(107, 102)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(26, 13)
+        Me.Label20.TabIndex = 8
+        Me.Label20.Text = "RM"
+        '
+        'txtEDeposit
+        '
+        Me.txtEDeposit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEDeposit.Location = New System.Drawing.Point(134, 99)
+        Me.txtEDeposit.Name = "txtEDeposit"
+        Me.txtEDeposit.ReadOnly = True
+        Me.txtEDeposit.Size = New System.Drawing.Size(160, 20)
+        Me.txtEDeposit.TabIndex = 7
+        '
+        'lblEDepositAmt
+        '
+        Me.lblEDepositAmt.AutoSize = True
+        Me.lblEDepositAmt.Location = New System.Drawing.Point(13, 102)
+        Me.lblEDepositAmt.Name = "lblEDepositAmt"
+        Me.lblEDepositAmt.Size = New System.Drawing.Size(88, 13)
+        Me.lblEDepositAmt.TabIndex = 6
+        Me.lblEDepositAmt.Text = "Deposit Amount :"
+        '
+        'txtEContact
+        '
+        Me.txtEContact.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEContact.Location = New System.Drawing.Point(109, 73)
+        Me.txtEContact.Name = "txtEContact"
+        Me.txtEContact.ReadOnly = True
+        Me.txtEContact.Size = New System.Drawing.Size(185, 20)
+        Me.txtEContact.TabIndex = 5
+        '
+        'txtEIC
+        '
+        Me.txtEIC.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEIC.Location = New System.Drawing.Point(109, 48)
+        Me.txtEIC.Name = "txtEIC"
+        Me.txtEIC.ReadOnly = True
+        Me.txtEIC.Size = New System.Drawing.Size(185, 20)
+        Me.txtEIC.TabIndex = 4
+        '
+        'txtEName
+        '
+        Me.txtEName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEName.Location = New System.Drawing.Point(109, 24)
+        Me.txtEName.Name = "txtEName"
+        Me.txtEName.ReadOnly = True
+        Me.txtEName.Size = New System.Drawing.Size(185, 20)
+        Me.txtEName.TabIndex = 3
+        '
+        'lblEContact
+        '
+        Me.lblEContact.AutoSize = True
+        Me.lblEContact.Location = New System.Drawing.Point(13, 76)
+        Me.lblEContact.Name = "lblEContact"
+        Me.lblEContact.Size = New System.Drawing.Size(67, 13)
+        Me.lblEContact.TabIndex = 2
+        Me.lblEContact.Text = "Contact No :"
+        '
+        'lblEIC
+        '
+        Me.lblEIC.AutoSize = True
+        Me.lblEIC.Location = New System.Drawing.Point(13, 51)
+        Me.lblEIC.Name = "lblEIC"
+        Me.lblEIC.Size = New System.Drawing.Size(84, 13)
+        Me.lblEIC.TabIndex = 1
+        Me.lblEIC.Text = "I/C or Passport :"
+        '
+        'lblEName
+        '
+        Me.lblEName.AutoSize = True
+        Me.lblEName.Location = New System.Drawing.Point(13, 27)
+        Me.lblEName.Name = "lblEName"
+        Me.lblEName.Size = New System.Drawing.Size(41, 13)
+        Me.lblEName.TabIndex = 0
+        Me.lblEName.Text = "Name :"
+        '
+        'btnEPrint
+        '
+        Me.btnEPrint.Enabled = False
+        Me.btnEPrint.Location = New System.Drawing.Point(166, 172)
+        Me.btnEPrint.Name = "btnEPrint"
+        Me.btnEPrint.Size = New System.Drawing.Size(108, 32)
+        Me.btnEPrint.TabIndex = 3
+        Me.btnEPrint.Text = "Print Receipt"
+        Me.btnEPrint.UseVisualStyleBackColor = True
+        Me.btnEPrint.Visible = False
+        '
+        'btnEExtend
+        '
+        Me.btnEExtend.Enabled = False
+        Me.btnEExtend.Location = New System.Drawing.Point(27, 172)
+        Me.btnEExtend.Name = "btnEExtend"
+        Me.btnEExtend.Size = New System.Drawing.Size(108, 32)
+        Me.btnEExtend.TabIndex = 2
+        Me.btnEExtend.Text = "Extend"
+        Me.btnEExtend.UseVisualStyleBackColor = True
+        '
+        'cbERoom
+        '
+        Me.cbERoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbERoom.FormattingEnabled = True
+        Me.cbERoom.Location = New System.Drawing.Point(110, 20)
+        Me.cbERoom.Name = "cbERoom"
+        Me.cbERoom.Size = New System.Drawing.Size(164, 21)
+        Me.cbERoom.TabIndex = 1
+        '
+        'lblERoomNo
+        '
+        Me.lblERoomNo.AutoSize = True
+        Me.lblERoomNo.Location = New System.Drawing.Point(24, 23)
+        Me.lblERoomNo.Name = "lblERoomNo"
+        Me.lblERoomNo.Size = New System.Drawing.Size(58, 13)
+        Me.lblERoomNo.TabIndex = 0
+        Me.lblERoomNo.Text = "Room No :"
         '
         'pnlLogBook
         '
+        Me.pnlLogBook.Controls.Add(Me.gpLogBookDisplay)
         Me.pnlLogBook.Controls.Add(Me.chkAll)
         Me.pnlLogBook.Controls.Add(Me.dtPicker)
         Me.pnlLogBook.Controls.Add(Me.dgvLogBook)
         Me.pnlLogBook.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlLogBook.Location = New System.Drawing.Point(0, 645)
+        Me.pnlLogBook.Location = New System.Drawing.Point(0, 438)
         Me.pnlLogBook.Name = "pnlLogBook"
-        Me.pnlLogBook.Size = New System.Drawing.Size(608, 77)
+        Me.pnlLogBook.Size = New System.Drawing.Size(608, 71)
         Me.pnlLogBook.TabIndex = 10
         Me.pnlLogBook.Visible = False
+        '
+        'gpLogBookDisplay
+        '
+        Me.gpLogBookDisplay.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gpLogBookDisplay.Controls.Add(Me.chkLogM)
+        Me.gpLogBookDisplay.Controls.Add(Me.chkLogCO)
+        Me.gpLogBookDisplay.Controls.Add(Me.chkLogCI)
+        Me.gpLogBookDisplay.Location = New System.Drawing.Point(352, 4)
+        Me.gpLogBookDisplay.Name = "gpLogBookDisplay"
+        Me.gpLogBookDisplay.Size = New System.Drawing.Size(253, 38)
+        Me.gpLogBookDisplay.TabIndex = 3
+        Me.gpLogBookDisplay.TabStop = False
+        Me.gpLogBookDisplay.Text = "Display Options"
+        '
+        'chkLogM
+        '
+        Me.chkLogM.AutoSize = True
+        Me.chkLogM.Location = New System.Drawing.Point(221, 19)
+        Me.chkLogM.Name = "chkLogM"
+        Me.chkLogM.Size = New System.Drawing.Size(88, 17)
+        Me.chkLogM.TabIndex = 2
+        Me.chkLogM.Text = "Maintenance"
+        Me.chkLogM.UseVisualStyleBackColor = True
+        '
+        'chkLogCO
+        '
+        Me.chkLogCO.AutoSize = True
+        Me.chkLogCO.Location = New System.Drawing.Point(113, 19)
+        Me.chkLogCO.Name = "chkLogCO"
+        Me.chkLogCO.Size = New System.Drawing.Size(77, 17)
+        Me.chkLogCO.TabIndex = 1
+        Me.chkLogCO.Text = "Check Out"
+        Me.chkLogCO.UseVisualStyleBackColor = True
+        '
+        'chkLogCI
+        '
+        Me.chkLogCI.AutoSize = True
+        Me.chkLogCI.Checked = True
+        Me.chkLogCI.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkLogCI.Location = New System.Drawing.Point(18, 19)
+        Me.chkLogCI.Name = "chkLogCI"
+        Me.chkLogCI.Size = New System.Drawing.Size(69, 17)
+        Me.chkLogCI.TabIndex = 0
+        Me.chkLogCI.Text = "Check In"
+        Me.chkLogCI.UseVisualStyleBackColor = True
         '
         'chkAll
         '
@@ -189,11 +541,11 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvLogBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvLogBook.Location = New System.Drawing.Point(2, 41)
+        Me.dgvLogBook.Location = New System.Drawing.Point(2, 49)
         Me.dgvLogBook.Name = "dgvLogBook"
         Me.dgvLogBook.ReadOnly = True
-        Me.dgvLogBook.Size = New System.Drawing.Size(604, 30)
-        Me.dgvLogBook.TabIndex = 0
+        Me.dgvLogBook.Size = New System.Drawing.Size(604, 16)
+        Me.dgvLogBook.TabIndex = 4
         '
         'pnlCheckOut
         '
@@ -203,9 +555,9 @@ Partial Class frmMain
         Me.pnlCheckOut.Controls.Add(Me.cbRoom)
         Me.pnlCheckOut.Controls.Add(Me.Label1)
         Me.pnlCheckOut.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlCheckOut.Location = New System.Drawing.Point(0, 497)
+        Me.pnlCheckOut.Location = New System.Drawing.Point(0, 382)
         Me.pnlCheckOut.Name = "pnlCheckOut"
-        Me.pnlCheckOut.Size = New System.Drawing.Size(608, 148)
+        Me.pnlCheckOut.Size = New System.Drawing.Size(608, 56)
         Me.pnlCheckOut.TabIndex = 9
         Me.pnlCheckOut.Visible = False
         '
@@ -216,7 +568,7 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpDetail.Controls.Add(Me.Label17)
         Me.gpDetail.Controls.Add(Me.txtDeposit)
-        Me.gpDetail.Controls.Add(Me.Label16)
+        Me.gpDetail.Controls.Add(Me.lblDepositAmt)
         Me.gpDetail.Controls.Add(Me.txtContact)
         Me.gpDetail.Controls.Add(Me.txtIC)
         Me.gpDetail.Controls.Add(Me.txtName)
@@ -225,7 +577,7 @@ Partial Class frmMain
         Me.gpDetail.Controls.Add(Me.lblName)
         Me.gpDetail.Location = New System.Drawing.Point(295, 10)
         Me.gpDetail.Name = "gpDetail"
-        Me.gpDetail.Size = New System.Drawing.Size(300, 135)
+        Me.gpDetail.Size = New System.Drawing.Size(300, 43)
         Me.gpDetail.TabIndex = 4
         Me.gpDetail.TabStop = False
         Me.gpDetail.Text = "Booking Details"
@@ -251,14 +603,14 @@ Partial Class frmMain
         Me.txtDeposit.Size = New System.Drawing.Size(160, 20)
         Me.txtDeposit.TabIndex = 7
         '
-        'Label16
+        'lblDepositAmt
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(13, 102)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(88, 13)
-        Me.Label16.TabIndex = 6
-        Me.Label16.Text = "Deposit Amount :"
+        Me.lblDepositAmt.AutoSize = True
+        Me.lblDepositAmt.Location = New System.Drawing.Point(13, 102)
+        Me.lblDepositAmt.Name = "lblDepositAmt"
+        Me.lblDepositAmt.Size = New System.Drawing.Size(88, 13)
+        Me.lblDepositAmt.TabIndex = 6
+        Me.lblDepositAmt.Text = "Deposit Amount :"
         '
         'txtContact
         '
@@ -361,7 +713,7 @@ Partial Class frmMain
         Me.pnlCheckIn.Dock = System.Windows.Forms.DockStyle.Top
         Me.pnlCheckIn.Location = New System.Drawing.Point(0, 350)
         Me.pnlCheckIn.Name = "pnlCheckIn"
-        Me.pnlCheckIn.Size = New System.Drawing.Size(608, 147)
+        Me.pnlCheckIn.Size = New System.Drawing.Size(608, 32)
         Me.pnlCheckIn.TabIndex = 8
         Me.pnlCheckIn.Visible = False
         '
@@ -370,6 +722,7 @@ Partial Class frmMain
         Me.gpCheckIn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gpCheckIn.Controls.Add(Me.btnRefresh)
         Me.gpCheckIn.Controls.Add(Me.btnCPrint)
         Me.gpCheckIn.Controls.Add(Me.Label18)
         Me.gpCheckIn.Controls.Add(Me.txtCDeposit)
@@ -401,10 +754,20 @@ Partial Class frmMain
         Me.gpCheckIn.Controls.Add(Me.btnCClear)
         Me.gpCheckIn.Location = New System.Drawing.Point(25, 12)
         Me.gpCheckIn.Name = "gpCheckIn"
-        Me.gpCheckIn.Size = New System.Drawing.Size(562, 131)
+        Me.gpCheckIn.Size = New System.Drawing.Size(562, 16)
         Me.gpCheckIn.TabIndex = 0
         Me.gpCheckIn.TabStop = False
         Me.gpCheckIn.Text = "Check-In Details"
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRefresh.Image = CType(resources.GetObject("btnRefresh.Image"), System.Drawing.Image)
+        Me.btnRefresh.Location = New System.Drawing.Point(525, 16)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(25, 25)
+        Me.btnRefresh.TabIndex = 2
+        Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'btnCPrint
         '
@@ -433,7 +796,7 @@ Partial Class frmMain
         Me.txtCDeposit.Name = "txtCDeposit"
         Me.txtCDeposit.Size = New System.Drawing.Size(127, 20)
         Me.txtCDeposit.TabIndex = 4
-        Me.txtCDeposit.Text = "20"
+        Me.txtCDeposit.Text = "0"
         Me.txtCDeposit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label19
@@ -689,6 +1052,7 @@ Partial Class frmMain
         '
         'pnlMainMenu
         '
+        Me.pnlMainMenu.Controls.Add(Me.btnExtend)
         Me.pnlMainMenu.Controls.Add(Me.btnCheckIn)
         Me.pnlMainMenu.Controls.Add(Me.btnCheckOut)
         Me.pnlMainMenu.Controls.Add(Me.btnLog)
@@ -697,6 +1061,16 @@ Partial Class frmMain
         Me.pnlMainMenu.Name = "pnlMainMenu"
         Me.pnlMainMenu.Size = New System.Drawing.Size(608, 350)
         Me.pnlMainMenu.TabIndex = 7
+        '
+        'btnExtend
+        '
+        Me.btnExtend.BackColor = System.Drawing.Color.White
+        Me.btnExtend.Image = CType(resources.GetObject("btnExtend.Image"), System.Drawing.Image)
+        Me.btnExtend.Location = New System.Drawing.Point(2, 158)
+        Me.btnExtend.Name = "btnExtend"
+        Me.btnExtend.Size = New System.Drawing.Size(311, 134)
+        Me.btnExtend.TabIndex = 6
+        Me.btnExtend.UseVisualStyleBackColor = False
         '
         'btnCheckIn
         '
@@ -720,24 +1094,23 @@ Partial Class frmMain
         '
         'btnLog
         '
-        Me.btnLog.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnLog.BackColor = System.Drawing.Color.White
         Me.btnLog.Image = CType(resources.GetObject("btnLog.Image"), System.Drawing.Image)
-        Me.btnLog.Location = New System.Drawing.Point(2, 157)
+        Me.btnLog.Location = New System.Drawing.Point(295, 157)
         Me.btnLog.Name = "btnLog"
-        Me.btnLog.Size = New System.Drawing.Size(604, 139)
+        Me.btnLog.Size = New System.Drawing.Size(311, 134)
         Me.btnLog.TabIndex = 5
         Me.btnLog.UseVisualStyleBackColor = False
         '
         'pnlSecond
         '
         Me.pnlSecond.Controls.Add(Me.dgvMaintenance)
+        Me.pnlSecond.Controls.Add(Me.pnlHideAvailability)
         Me.pnlSecond.Controls.Add(Me.gpMaintenance)
         Me.pnlSecond.Dock = System.Windows.Forms.DockStyle.Right
         Me.pnlSecond.Location = New System.Drawing.Point(618, 0)
         Me.pnlSecond.Name = "pnlSecond"
-        Me.pnlSecond.Size = New System.Drawing.Size(250, 721)
+        Me.pnlSecond.Size = New System.Drawing.Size(250, 750)
         Me.pnlSecond.TabIndex = 1
         '
         'dgvMaintenance
@@ -751,7 +1124,7 @@ Partial Class frmMain
         Me.dgvMaintenance.Location = New System.Drawing.Point(0, 0)
         Me.dgvMaintenance.Name = "dgvMaintenance"
         Me.dgvMaintenance.RowHeadersVisible = False
-        Me.dgvMaintenance.Size = New System.Drawing.Size(250, 592)
+        Me.dgvMaintenance.Size = New System.Drawing.Size(250, 590)
         Me.dgvMaintenance.TabIndex = 0
         '
         'ID
@@ -778,6 +1151,27 @@ Partial Class frmMain
         Me.Complete.HeaderText = "Complete"
         Me.Complete.Name = "Complete"
         '
+        'pnlHideAvailability
+        '
+        Me.pnlHideAvailability.Controls.Add(Me.chkHideAvailability)
+        Me.pnlHideAvailability.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.pnlHideAvailability.Location = New System.Drawing.Point(0, 590)
+        Me.pnlHideAvailability.Name = "pnlHideAvailability"
+        Me.pnlHideAvailability.Size = New System.Drawing.Size(250, 31)
+        Me.pnlHideAvailability.TabIndex = 0
+        '
+        'chkHideAvailability
+        '
+        Me.chkHideAvailability.AutoSize = True
+        Me.chkHideAvailability.Checked = True
+        Me.chkHideAvailability.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkHideAvailability.Location = New System.Drawing.Point(6, 8)
+        Me.chkHideAvailability.Name = "chkHideAvailability"
+        Me.chkHideAvailability.Size = New System.Drawing.Size(131, 17)
+        Me.chkHideAvailability.TabIndex = 0
+        Me.chkHideAvailability.Text = "Hide Room Availability"
+        Me.chkHideAvailability.UseVisualStyleBackColor = True
+        '
         'gpMaintenance
         '
         Me.gpMaintenance.Controls.Add(Me.btnMAdd)
@@ -786,7 +1180,7 @@ Partial Class frmMain
         Me.gpMaintenance.Controls.Add(Me.cbMRoom)
         Me.gpMaintenance.Controls.Add(Me.Label14)
         Me.gpMaintenance.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.gpMaintenance.Location = New System.Drawing.Point(0, 592)
+        Me.gpMaintenance.Location = New System.Drawing.Point(0, 621)
         Me.gpMaintenance.Name = "gpMaintenance"
         Me.gpMaintenance.Size = New System.Drawing.Size(250, 129)
         Me.gpMaintenance.TabIndex = 1
@@ -849,26 +1243,39 @@ Partial Class frmMain
         Me.Splitter.Dock = System.Windows.Forms.DockStyle.Right
         Me.Splitter.Location = New System.Drawing.Point(608, 0)
         Me.Splitter.Name = "Splitter"
-        Me.Splitter.Size = New System.Drawing.Size(10, 721)
+        Me.Splitter.Size = New System.Drawing.Size(10, 750)
         Me.Splitter.TabIndex = 2
         Me.Splitter.TabStop = False
+        '
+        'pnlRoomAvailability
+        '
+        Me.pnlRoomAvailability.Location = New System.Drawing.Point(187, 63)
+        Me.pnlRoomAvailability.Name = "pnlRoomAvailability"
+        Me.pnlRoomAvailability.Size = New System.Drawing.Size(301, 56)
+        Me.pnlRoomAvailability.TabIndex = 8
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(868, 721)
+        Me.ClientSize = New System.Drawing.Size(868, 750)
         Me.Controls.Add(Me.pnlMain)
         Me.Controls.Add(Me.Splitter)
         Me.Controls.Add(Me.pnlSecond)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.Text = "SRI SENA - Hotel Management System"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.pnlMain.ResumeLayout(False)
         Me.pnlLogo.ResumeLayout(False)
-        CType(Me.picLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlExtend.ResumeLayout(False)
+        Me.pnlExtend.PerformLayout()
+        Me.gpEDetail.ResumeLayout(False)
+        Me.gpEDetail.PerformLayout()
         Me.pnlLogBook.ResumeLayout(False)
         Me.pnlLogBook.PerformLayout()
+        Me.gpLogBookDisplay.ResumeLayout(False)
+        Me.gpLogBookDisplay.PerformLayout()
         CType(Me.dgvLogBook, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlCheckOut.ResumeLayout(False)
         Me.pnlCheckOut.PerformLayout()
@@ -880,6 +1287,8 @@ Partial Class frmMain
         Me.pnlMainMenu.ResumeLayout(False)
         Me.pnlSecond.ResumeLayout(False)
         CType(Me.dgvMaintenance, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlHideAvailability.ResumeLayout(False)
+        Me.pnlHideAvailability.PerformLayout()
         Me.gpMaintenance.ResumeLayout(False)
         Me.gpMaintenance.PerformLayout()
         Me.ResumeLayout(False)
@@ -893,7 +1302,6 @@ Partial Class frmMain
     Friend WithEvents Splitter As System.Windows.Forms.Splitter
     Friend WithEvents dgvMaintenance As System.Windows.Forms.DataGridView
     Friend WithEvents gpMaintenance As System.Windows.Forms.GroupBox
-    Friend WithEvents picLogo As System.Windows.Forms.PictureBox
     Friend WithEvents pnlMainMenu As System.Windows.Forms.Panel
     Friend WithEvents pnlLogBook As System.Windows.Forms.Panel
     Friend WithEvents pnlCheckOut As System.Windows.Forms.Panel
@@ -950,11 +1358,46 @@ Partial Class frmMain
     Friend WithEvents Complete As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents txtDeposit As System.Windows.Forms.TextBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents lblDepositAmt As System.Windows.Forms.Label
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents txtCDeposit As System.Windows.Forms.TextBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents btnCPrint As System.Windows.Forms.Button
     Friend WithEvents btnCClear As System.Windows.Forms.Button
+    Friend WithEvents pnlHideAvailability As System.Windows.Forms.Panel
+    Friend WithEvents chkHideAvailability As System.Windows.Forms.CheckBox
+    Friend WithEvents btnRefresh As System.Windows.Forms.Button
+    Friend WithEvents gpLogBookDisplay As System.Windows.Forms.GroupBox
+    Friend WithEvents chkLogCO As System.Windows.Forms.CheckBox
+    Friend WithEvents chkLogCI As System.Windows.Forms.CheckBox
+    Friend WithEvents chkLogM As System.Windows.Forms.CheckBox
+    Friend WithEvents btnExtend As System.Windows.Forms.Button
+    Friend WithEvents pnlExtend As System.Windows.Forms.Panel
+    Friend WithEvents gpEDetail As System.Windows.Forms.GroupBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents txtEDeposit As System.Windows.Forms.TextBox
+    Friend WithEvents lblEDepositAmt As System.Windows.Forms.Label
+    Friend WithEvents txtEContact As System.Windows.Forms.TextBox
+    Friend WithEvents txtEIC As System.Windows.Forms.TextBox
+    Friend WithEvents txtEName As System.Windows.Forms.TextBox
+    Friend WithEvents lblEContact As System.Windows.Forms.Label
+    Friend WithEvents lblEIC As System.Windows.Forms.Label
+    Friend WithEvents lblEName As System.Windows.Forms.Label
+    Friend WithEvents btnEPrint As System.Windows.Forms.Button
+    Friend WithEvents btnEExtend As System.Windows.Forms.Button
+    Friend WithEvents cbERoom As System.Windows.Forms.ComboBox
+    Friend WithEvents lblERoomNo As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents txtEPrice As System.Windows.Forms.TextBox
+    Friend WithEvents txtEDays As System.Windows.Forms.TextBox
+    Friend WithEvents lblETotalPrice As System.Windows.Forms.Label
+    Friend WithEvents lblEExtendDay As System.Windows.Forms.Label
+    Friend WithEvents lblEBalanceRM As System.Windows.Forms.Label
+    Friend WithEvents txtEBalance As System.Windows.Forms.TextBox
+    Friend WithEvents lblEBalance As System.Windows.Forms.Label
+    Friend WithEvents lblEPaidRM As System.Windows.Forms.Label
+    Friend WithEvents txtEPaid As System.Windows.Forms.TextBox
+    Friend WithEvents lblEPaid As System.Windows.Forms.Label
+    Friend WithEvents pnlRoomAvailability As System.Windows.Forms.Panel
 
 End Class

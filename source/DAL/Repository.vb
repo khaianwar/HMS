@@ -9,6 +9,27 @@ Public Class Repository
     End Sub
 #End Region
 
+#Region "Generic"
+    Public Sub ExecuteNonQuery(ByVal sqlQuery As String)
+        Using sqlConn As New MySqlConnection(_connString)
+            Using sqlComm As New MySqlCommand()
+                With sqlComm
+                    .Connection = sqlConn
+                    .CommandText = sqlQuery
+                    .CommandType = CommandType.Text
+                End With
+                Try
+                    sqlConn.Open()
+                    sqlComm.ExecuteNonQuery()
+                    sqlConn.Close()
+                Catch ex As MySqlException
+
+                End Try
+            End Using
+        End Using
+    End Sub
+#End Region
+
 #Region "User Management"
     Public Function Login(ByVal _user As String, ByVal _pwd As String) As String
         Dim sqlQuery As String = "SELECT Count(*) As Counts FROM HMS_User WHERE username = @uname AND password = @upwd"
@@ -210,6 +231,31 @@ Public Class Repository
         Return _ds
     End Function
 
+    Public Function UpdateHMS_Detail(ByVal _DetailID As String, ByVal _days As UInteger, ByVal _totalPrice As Decimal, ByVal _paidAmt As Decimal) As Boolean
+        Dim sqlQuery As String = "UPDATE `HMS_Detail` SET `NoOfDays`=@NoDays,`TotalPrice`=@TotalPrice,`PaidAmount`=@PaidAmount WHERE `id` = @DetailID"
+        Using sqlConn As New MySqlConnection(_connString)
+            Using sqlComm As New MySqlCommand()
+                With sqlComm
+                    .Connection = sqlConn
+                    .CommandText = sqlQuery
+                    .CommandType = CommandType.Text
+                    .Parameters.AddWithValue("@NoDays", _days)
+                    .Parameters.AddWithValue("@TotalPrice", _totalPrice)
+                    .Parameters.AddWithValue("@PaidAmount", _paidAmt)
+                    .Parameters.AddWithValue("@DetailID", _DetailID)
+                End With
+                Try
+                    sqlConn.Open()
+                    Dim sqlResult As Integer = sqlComm.ExecuteNonQuery()
+                    sqlConn.Close()
+                Catch ex As MySqlException
+                    Return False
+                End Try
+            End Using
+        End Using
+        Return True
+    End Function
+
     Public Function AddHMS_ReceiptNo(ByVal _DetailID As ULong) As ULong
         Dim recptNo As ULong = 0
         Dim sqlQuery As String = "INSERT INTO `HMS_ReceiptNo` (`DetailID`) VALUES(@DetailID); SELECT `id` from `HMS_ReceiptNo` where `id`=@@Identity"
@@ -359,7 +405,7 @@ Public Class Repository
 
     Public Function GetAllHMS_Log() As DataSet
         Dim _ds As New DataSet
-        Dim sqlQuery As String = "SELECT `id`,`RoomNo`,CASE (`LogType`) when 1 then 'Checked In' when 2 then 'Checked Out' when 3 then 'Maintenance Start' when 4 then 'Maintenance End' end `LogType`,`DateTime`,`DetailID`,`MaintenanceID` from `HMS_Log`"
+        Dim sqlQuery As String = "SELECT b.RoomType,a.RoomNo,b.Name,b.IC,b.ContactNo,a.LogType,c.Reason,a.DateTime from `HMS_Log` a LEFT JOIN `HMS_Detail` b ON a.DetailID=b.id LEFT JOIN `HMS_Maintenance` c ON a.MaintenanceID=c.id ORDER BY a.DateTime"
         Using sqlConn As New MySqlConnection(_connString)
             Using sqlComm As New MySqlCommand()
                 With sqlComm
@@ -382,7 +428,7 @@ Public Class Repository
 
     Public Function GetHMS_Log(ByVal _date As Date) As DataSet
         Dim _ds As New DataSet
-        Dim sqlQuery As String = "SELECT `id`,`RoomNo`,CASE (`LogType`) when 1 then 'Checked In' when 2 then 'Checked Out' when 3 then 'Maintenance Start' when 4 then 'Maintenance End' end `LogType`,`DateTime`,`DetailID`,`MaintenanceID` from `HMS_Log` WHERE convert(`DateTime`, date) = @dtime"
+        Dim sqlQuery As String = "SELECT b.RoomType,a.RoomNo,b.Name,b.IC,b.ContactNo,a.LogType,c.Reason,a.DateTime from `HMS_Log` a LEFT JOIN `HMS_Detail` b ON a.DetailID=b.id LEFT JOIN `HMS_Maintenance` c ON a.MaintenanceID=c.id WHERE convert(a.DateTime, date) = @dtime ORDER BY a.DateTime"
         Using sqlConn As New MySqlConnection(_connString)
             Using sqlComm As New MySqlCommand()
                 With sqlComm
@@ -433,9 +479,12 @@ Public Class Repository
         Return 2
     End Function
 
-    Public Function GetAvailableRoom() As DataSet
+    Public Function GetAvailableRoom(ByVal isHideMaintenance As Boolean) As DataSet
         Dim _ds As New DataSet
         Dim sqlQuery As String = "SELECT * from `HMS_Room` WHERE `IsUsed` = 0"
+        If isHideMaintenance Then
+            sqlQuery &= " AND `RoomNo` NOT IN (SELECT `Room` from `HMS_Maintenance` where `Complete`=0)"
+        End If
         Using sqlConn As New MySqlConnection(_connString)
             Using sqlComm As New MySqlCommand()
                 With sqlComm
@@ -664,6 +713,28 @@ Public Class Repository
                             Return _ds
                         End Try
                     End Using
+                End Using
+            End Using
+        End Using
+        Return _ds
+    End Function
+
+    Public Function UpdateHMS_RoomPrice(ByRef _ds As DataSet) As DataSet
+        Dim sqlUpdateQuery As String = "UPDATE `HMS_Room` SET Price=?Price WHERE id=?id"
+        Using sqlConn As New MySqlConnection(_connString)
+            Using sqlCommUpdate As New MySqlCommand()
+                With sqlCommUpdate
+                    .Connection = sqlConn
+                    .CommandText = sqlUpdateQuery
+                    .Parameters.Add("?id", MySqlDbType.UInt32, 10, "id")
+                    .Parameters.Add("?Price", MySqlDbType.Decimal, 5, "Price")
+                End With
+                For i As Integer = 0 To sqlCommUpdate.Parameters.Count - 1
+                    sqlCommUpdate.Parameters(i).SourceVersion = DataRowVersion.Current
+                Next
+                Using sqlDA As New MySqlDataAdapter()
+                    sqlDA.UpdateCommand = sqlCommUpdate
+                    sqlDA.Update(_ds, "HMS_Room")
                 End Using
             End Using
         End Using

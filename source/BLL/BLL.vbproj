@@ -71,6 +71,7 @@
     <Compile Include="CheckOutBLL.vb" />
     <Compile Include="Common.vb" />
     <Compile Include="Converter.vb" />
+    <Compile Include="ExtendBLL.vb" />
     <Compile Include="LogBLL.vb" />
     <Compile Include="MaintenanceBLL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

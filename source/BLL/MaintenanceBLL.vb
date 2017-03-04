@@ -1,7 +1,11 @@
-﻿Public Class MaintenanceBLL
+﻿Imports System.Collections.Generic
+Public Class MaintenanceBLL
     Private _connString As String = String.Empty
     Private _lstRoom As List(Of String)
     Private _lstReason As List(Of String)
+    Private _dicRooms As Dictionary(Of String, String)
+    Private _roomAvail As Dictionary(Of String, Boolean)
+    Private _roomLevel As Dictionary(Of String, Integer)
     Public ReadOnly Property ListRoom As List(Of String)
         Get
             Return _lstRoom
@@ -12,23 +16,67 @@
             Return _lstReason
         End Get
     End Property
+    Public ReadOnly Property ListRooms As Dictionary(Of String, String)
+        Get
+            Return _dicRooms
+        End Get
+    End Property
+    Public ReadOnly Property RoomAvailability As Dictionary(Of String, Boolean)
+        Get
+            Return _roomAvail
+        End Get
+    End Property
+    Public ReadOnly Property RoomLevel As Dictionary(Of String, Integer)
+        Get
+            Return _roomLevel
+        End Get
+    End Property
 
     Public Sub New(ByVal connString As String)
         _connString = connString
         _lstRoom = New List(Of String)
         _lstReason = New List(Of String)
+        _dicRooms = New Dictionary(Of String, String)
+        _roomAvail = New Dictionary(Of String, Boolean)
+        _roomLevel = New Dictionary(Of String, Integer)
     End Sub
 
     Public Sub GetRooms()
         Dim _DAL As New DAL.Repository(_connString)
-        Dim _ds As DataSet = _DAL.GetRooms("RoomNo")
+        Dim _ds As DataSet = _DAL.GetRooms("RoomNo,RoomType,IsUsed,Level")
         _DAL = Nothing
         _lstRoom.Clear()
+        _dicRooms.Clear()
+        _roomAvail.Clear()
+        _roomLevel.Clear()
         If _ds.Tables.Contains("HMS_Room") Then
             For Each _dr As DataRow In _ds.Tables("HMS_Room").Rows
                 _lstRoom.Add(_dr.Item("RoomNo").ToString)
+                _dicRooms.Add(_dr.Item("RoomNo").ToString, _dr.Item("RoomType").ToString.ToUpper)
+                _roomAvail.Add(_dr.Item("RoomNo").ToString, Converter.ToBool(_dr.Item("IsUsed")))
+                _roomLevel.Add(_dr.Item("RoomNo").ToString, Converter.ToInt(_dr.Item("Level")))
             Next
         End If
+    End Sub
+
+    Public Function GetRoomPrices() As DataSet
+        Dim _DAL As New DAL.Repository(_connString)
+        Dim _ds As DataSet = _DAL.GetRooms("ID,RoomNo,RoomType,Level,Price")
+        _DAL = Nothing
+        Return _ds
+    End Function
+
+    Public Function UpdateHMS_RoomPrice(ByRef _ds As DataSet) As DataSet
+        Dim _DAL As New DAL.Repository(_connString)
+        _ds = _DAL.UpdateHMS_RoomPrice(_ds)
+        _DAL = Nothing
+        Return _ds
+    End Function
+
+    Public Sub ExecuteNonQuery_Update_V1()
+        Dim _DAL As New DAL.Repository(_connString)
+        _DAL.ExecuteNonQuery("ALTER TABLE `HMS_Room` ADD COLUMN `Level` INT NOT NULL DEFAULT '1';")
+        _DAL = Nothing
     End Sub
 
     Public Sub GetReasons()
@@ -57,7 +105,7 @@
         Dim DetailID As ULong = Converter.ToULong(_ds.Tables(0).Rows(0).Item("id").ToString)
         If DetailID > 0 Then
             _result = True
-            _DAL.AddHMS_Log(_roomno, LogType.MaintenanceStart, _DateNow, Nothing, Nothing)
+            _DAL.AddHMS_Log(_roomno, LogType.MaintenanceStart, _DateNow, Nothing, DetailID)
         Else
             _result = False
         End If

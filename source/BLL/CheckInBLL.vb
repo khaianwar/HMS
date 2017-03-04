@@ -104,9 +104,9 @@ Public Class CheckInBLL
         Return _roomType.Substring(0, index - 2)
     End Function
 
-    Public Sub GetRooms()
+    Public Sub GetRooms(ByVal isHideMaintenance As Boolean)
         Dim _DAL As New DAL.Repository(_connString)
-        Dim _ds As DataSet = _DAL.GetAvailableRoom()
+        Dim _ds As DataSet = _DAL.GetAvailableRoom(isHideMaintenance)
         Dim _roomType As String = String.Empty
         _DAL = Nothing
         _dicRoom.Clear()
